@@ -1,0 +1,41 @@
+20010326: version 0.4.0
+	splitted sources in directories
+	created shared libraries
+	added time specifiers for qwavsample, qwavsilence, q{mp3,wav}cut
+	corrected a bug that made qwavfade just fade the first of the given files to fade.
+	improved qmp3report (html output, split reports across subdirs)
+	added variable bit rate support for qmp3info, qmp3check, qmp3report, qmp3join (no vbr support in qmp3cut by now) (xing vbr headers are not read).
+	qwavheaderdump: added some capability to recover damaged headers.
+	adapted source code to compile with no modifications with cygwin tools. binary versions for windows available separately.
+	(near complete) .mo gettext translation files for catalan and spanish
+	deprecated man pages. 
+	full documentation in texinfo, html and txt formats. postscript version available separately.
+	doxygen-ized part of the library code
+	
+
+20010123: version 0.3.0
+	added gettext support. no translations available yet
+	added qwavfade
+	added qmp3report
+	added qwavheaderdump
+	added long options support (getopt_long)
+	added ability to specify file points with millisecond resolution
+	added silence shrinking capability to qwavsilence
+	speeded up qwavsilence on non silent wav files
+	updated man pages
+
+20001227: version 0.2.0
+	corrected some function signatures that caused egcs fail (almost 
+	  version 2.91.66)
+	corrected overflow bug that caused fail on search ops in big files
+	added qwavsilence and qmp3check
+	updated man pages
+
+20001211: version 0.1.0
+	rewritten file access with mmap
+	renamed binaries and most of sources prepending with 'q'
+	code cleanup
+	added qmp3cut
+
+20001031: version 0.0.0b
+	first public release: wavinfo, wavjoin, wavcut, mp3info, mp3join
