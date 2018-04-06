@@ -1,0 +1,53 @@
+installation instructions for quelcom 0.4.0
+
+
+REQUIREMENTS
+
+quelcom is being developed on an intel p133 with suse 6.3 linux. other 
+  configurations may work also.
+
+a c++ compiler is needed. i'm currently using gcc 2.95.2.
+c++ libraries: libstdc++ is required.
+
+
+BUILDING AND INSTALLATION
+
+the sources may be found at http://www.etse.urv.es/~dmanye/quelcom/quelcom.html
+unpack the package:
+	tar xzf quelcom-0.4.0.tar.gz
+this should create a directory called quelcom-0.4.0 and expand there all the 
+  files
+
+get into the directory and build
+	cd quelcom-0.4.0
+	make
+if you get any irrecoverable error, you can try to fix it by editing by hand 
+  the makefile, or looking at the source files ;-). otherwise you can try to 
+  contact with me and explain me what kind of error you get.
+
+when everything is fine you can proceed with installation issuing the command:
+	make install
+
+by default places of installation are:
+	- /usr/local/bin: executables
+	- /usr/local/lib: libraries
+        - /usr/local/share/locale: translation files
+	- /usr/local/info: info manual 
+
+you can change this by editing the root makefile and changing the predefined 
+  values to your preferences.
+
+the doc directory contains also the info manual in html and txt formats.
+
+in addition, this release also contains the deprecated man pages for version 
+0.3.0. they will be installed under /usr/local/man if you issue the command 
+'make installman'.
+
+
+
+  
+
+gaudeix-ne, si pots.
+
+dmanye@etse.urv.es
+http://www.etse.urv.es/~dmanye/quelcom/quelcom.html
