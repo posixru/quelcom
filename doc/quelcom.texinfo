@@ -1,0 +1,858 @@
+\input texinfo.tex    @c -*-texinfo-*-
+@c %**start of header
+
+@include version.texinfo
+
+@setfilename quelcom.info
+@settitle quelcom tools @value{VERSION}
+
+@finalout
+@setchapternewpage odd
+
+@c %**end of header
+
+@ifinfo
+
+this file documents the @code{quelcom tools}: a set of commands to handle @file{.wav} and @file{.mp3} files@.
+
+permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+@ignore
+permission is granted to process this file through tex and print the
+results, provided the printed document carries copying permission
+notice identical to this one except for the removal of this paragraph
+(this paragraph not being relevant to the printed manual).
+@end ignore
+
+permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+@end ifinfo
+
+@titlepage
+@title quelcom tools
+@subtitle command line tools to handle @file{.wav} and @file{.mp3} files
+@subtitle @value{UPDATED}
+@author by david many@'e <dmanye@@etse.urv.es>
+
+@c això seria la cara del darrera de la portada 
+@page
+@vskip 0pt plus 1filll
+
+permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+@end titlepage
+
+@node top
+
+@include version.texinfo
+
+@ifinfo
+
+this file documents the @code{quelcom tools v@value{VERSION}}: a set of command line tools to handle @file{.wav} and @file{.mp3} files.
+
+@end ifinfo
+
+@c all the menus can be updated with the emacs command
+@c texinfo-all-menus-update, which is normally bound to c-c c-u c-a.
+@menu
+* license::			what you can do with quelcom
+
+* introduction::                introductory information.
+* installation::		installation instructions
+* wav tools::			tools to manipulate wav files
+* mp3 tools::			tools to manipulate mp3 files
+
+* cut points::                  how to specify points in files
+* specifying time::             how to specify time in arguments
+@end menu
+
+@contents
+
+@node license, introduction, top, top
+@include gpl.texinfo
+
+@node introduction, installation, license, top
+@chapter introduction
+
+@code{quelcom tools} is a set of command line tools to manipulate @file{.wav} and @file{.mp3} files.
+
+with these tools you can do a set of operations (get info, join, cut, delete fragments, detect silence, check, fade, ...) on maybe the most popular sound file formats (wave and mpeg layer 3) without the need of a grafical interface (xwindow) nor these or those grafical libraries.
+
+since they are build as command line apps, they can be easily included in scripts to do automatically some job.
+
+the @code{quelcom tools} package is written by @email{dmanye@@etse.urv.es,david many@'e} and you may find the package sources in @uref{http://www.etse.urv.es/~dmanye/quelcom/quelcom.html}.
+
+@node installation, requirements, introduction, top
+@chapter installation
+
+@menu
+* requirements::
+* configuring building and installing::
+* problems::
+@end menu
+
+@node requirements, configuring building and installing, installation, installation
+@section requirements
+
+the @code{quelcom tools} package is being developed on an old intel p133 with suse linux 6.3. other configurations may work also.
+
+a c++ compiler is needed. currently are used gcc-2.95.2 and egcs-2.91.66. you can get the compiler name and version issuing the command @code{gcc@w{ }--version}.
+
+and of course, you also need que @code{quelcom tools} package. you may find it at @w{http://www.etse.urv.es/~dmanye/quelcom/quelcom.html}. using the latest available version is recommended.
+
+@node configuring building and installing, problems, requirements, installation
+@section configuring and building
+
+@enumerate
+
+@item 
+unpack the package with the command @code{tar@w{ }xzf@w{ }quelcom-@value{VERSION}.tar.gz}. this creates a directory named @file{quelcom-@value{VERSION}} and expands there all the files.
+
+@item
+get into the directory with @code{@w{cd quelcom-@value{VERSION}}}
+
+@item
+if you want, you can take a look at the makefiles. then type @code{make} to build the sources. some compiler messages may appear, but it should compile successfully.
+
+@item
+once the package is successfully build, you can proceed to install it with @code{make install}. 
+
+by default, the executables are installed under @file{/usr/local/bin}, the libraries under @file{/usr/local/lib}, the translation @file{.mo} files under @file{/usr/local/share/locale} and the info manual file under @file{/usr/local/info}.
+ 
+@end enumerate
+
+to activate the automatic translation to catalan or to spanish (the only languages supported at this moment), it should be enough (if there haven't been no problem until now), setting the environment variable @env{LANG} this way (with @command{bash} shell): @command{export LANG=ca} or @command{export LANG=es} respectively. otherwise, the messages will appear in english.
+
+
+@node problems, wav tools, configuring building and installing, installation
+@section problems
+
+if you have problems configuring or building the package, or if you find a bug in any of the tools, please update to the latest release. if the problem remains, please send electronic mail to @w{@samp{dmanye@@etse.urv.es}} including the version number and a detailed description of the problem.
+
+@node wav tools, qwavcut, problems, top
+@chapter wav tools
+
+tests has been done only with 44100 Hz 16 bit stereo files, though it may work with mono/stereo 8/16 bits files.
+
+the tools to handle wav files are the following:
+@menu
+* qwavcut::            extract and/or delete parts of a wav file@.
+* qwavfade::           fade in/out wav files@.
+* qwavheaderdump::     dump (and fix) wav headers@.
+* qwavinfo::           show info from wav files@.
+* qwavjoin::           join multiple wav files in one@.
+* qwavsilence::        detect and shrink silence sequences in wav files@.
+@end menu
+
+@iftex
+@ifnothtml
+@itemize @bullet
+@item @command{qwavcut}
+to extract and/or delete parts of a wav file@.
+@item @command{qwavfade}
+to fade in/out wav files@.
+@item @command{qwavheaderdump}
+to dump (and fix) wav headers@.
+@item @command{qwavinfo}
+to show info from wav files@.
+@item @command{qwavjoin}
+to join multiple wav files in one@.
+@item @command{qwavsilence}
+to detect and shrink silence sequences in wav files@.
+@end itemize
+@end ifnothtml
+@end iftex
+
+@page
+@node qwavcut, qwavfade, wav tools, wav tools
+@section qwavcut
+
+@command{qwavcut} extracts and/or deletes parts of a wav file
+
+@subsection synopsis
+@samp{qwavcut @var{option}@dots{} @var{file}}
+
+@subsection description
+@command{qwavcut} allows to extract and/or delete a fragment of a wav file. some parameters must be supplied in order to define the start/size/end cut points and what to do then: either the fragment must be copied to another file or erased from the file (or both)
+
+@subsection general options
+@table @samp
+@item -d
+@itemx --delete
+deletes the fragment from the file. if option @option{--delete} is used, deletion is always done after fragment extraction.
+@item -h
+@itemx --help
+show a brief help and exit.
+@item -o @var{outfile}
+@itemx --output=@var{outfile}
+@var{outfile} is the name of the file where all the samples in the given fragment will be copied. 
+@c @item -v
+@c @itemx --verbose
+@c show which operations are done.
+@item -V
+@itemx --version
+show version and exit.
+@end table
+
+@subsection cut options
+cut options are used to specify where the fragment begins and ends. there are two ways to do it: with time slices (easier) and with cut points (more complex but also more powerful). cut options are mandatory (which way is used is matter of your choice).
+
+if time slices are used, cut points options are automatically ignored.
+
+
+@subsubsection cut with time slices
+there is only one option:
+
+@table @samp
+@item -S @var{timeslice}
+@itemx --slice @var{timeslice}      
+@var{timeslice} (@pxref{specifying time}) specifies, in terms of time, where the cut begins and ends.
+@end table
+
+@subsubsection cut with cut points
+there are several options with cut points. cut points are used to specify at which sample the fragment begins (@option{--begin} and @option{--Begin}), ends (@option{--end} and @option{--End}), or which size it has (@option{--size}). at least, one cut option must be specified (non specified options take its default values). neither the options @option{--begin} and @option{--Begin}, and the options @option{--end} and @option{--End} can be used together; also, a begin, end and size option cannot be used at the same time.
+
+by default, the fragment begins at the first sample and ends at the last sample; there's no default value for size. 
+
+@table @samp
+
+@item -b @var{cutpoint}
+@itemx --set-begin-from-eof=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the first sample of the file that belongs to the cut counting from the end of the file.
+
+@item -B @var{cutpoint}
+@itemx --set-begin=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the first sample of the file that belongs to the cut counting from the beginning of the file.
+
+@item -e @var{cutpoint}
+@itemx --set-end-from-eof=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the last sample of the file that belongs to the cut counting from the end of the file.
+
+@item -E @var{cutpoint}
+@itemx --set-end=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the last sample of the file that belongs to the cut counting from the beginning of the file.
+
+@item -s @var{cutpoint}
+@itemx --size=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the number of samples contained in the cut.
+@end table
+
+@subsection examples
+
+@enumerate
+
+@item
+to get the last ten seconds of a file
+@example
+qwavcut -b 10s -o outfile.wav infile.wav
+@end example
+
+@item
+four different ways to get the first minute of a file:
+@example
+qwavcut -S -1:0 -o outfile.wav infile.wav
+qwavcut -S -60 -o outfile.wav infile.wav
+qwavcut -E 1m -o outfile.wav infile.wav
+qwavcut -s 1m -o outfile.wav infile.wav
+@end example
+
+@item
+four ways of getting the second quarter of a file:
+@example
+qwavcut -S 15:0-30:0 -o outfile.wav infile.wav
+qwavcut -B 15m -E 30m -o outfile.wav infile.wav
+qwavcut -s 15m -E 30m -o outfile.wav infile.wav
+qwavcut -B 15m -s 15m -o outfile.wav infile.wav
+@end example
+
+@end enumerate
+
+@page
+@node qwavfade, qwavheaderdump, qwavcut, wav tools
+@section qwavfade
+
+@command{qwavfade} fade in/out wav files
+
+@subsection synopsis
+@samp{qwavfade @var{option}@dots{} @var{file}@dots{}}
+
+@subsection description
+@command{qwavfade} modifies a wav file applying on it a fade in or a fade out or both.
+
+a fade consists in modifying progressively the level of the wav as if you were slowly increasing or decreasing the volume. a fade in consists in increasing the volume starting from a low level at the beginning of the wav. a fade out consists in decreasing the volume to a low level at the end of the wav. 
+
+
+@subsection option list
+
+@table @samp
+@item -d @var{cutpoint}
+@itemx --duration=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the duration of the fade. the default value is five seconds. this option overrides the @option{--length} option explained below.
+@item -h
+@itemx --help
+show a brief help and exit.
+@item -i
+@itemx --in
+just fade in. don't fade out. by default, fade in and fade out.
+@item -l @var{time}
+@itemx --length=@var{time}
+@var{time} (@pxref{specifying time}) specifies the length(=duration) of the fade. this option is quite similar to the @option{--duration} option above. it's easier to use though not as powerful than the previous one. the default value is five seconds. this option overrides @option{--duration} option explained above. 
+@item -o
+@itemx --out
+just fade out. don't fade in. by default, fade in and fade out.
+@item -t
+@itemx --test
+this option can be used to create and fade test files instead of modifying the original file. a test file will be created for each type of selected fade (in or out). the name of the test file will be @file{fadein.@var{file}} or @file{fadeout.@var{file}}. the duration of the test files is the fade duration plus five seconds.
+@item -v
+@itemx --verbose
+show more detailed info.
+@item -V
+@itemx --version
+show version and exit.
+@end table
+
+@subsection example
+
+suppose you want to fade in and out the fantastic song @file{live.in.concert.wav} using a fade duration of 3.5 seconds:
+
+first we are going to test:
+@example
+qwavfade --test --length 3.5 live.in.concert.wav
+@end example
+
+hear the test fades:
+@example
+my-wav-player fadein.live.in.concert.wav fadeout.live.in.concert.wav
+@end example
+
+if you want to try with another duration, jump to the first step and change the @option{length}(or @option{--duration}) argument. 
+
+if you're happy with the tests (omit @option{--test}):
+@example
+qwavfade --length 3.5 live.in.concert.wav
+@end example
+
+@subsection notes
+@command{qwavfade} doesn't allow both types of fades (in and out) to overlap. if you want to fade in and out a wav file, and the two regions to fade overlap, then probably you made a mistake (maybe you selected a too large fade). in any case, you'll have to fade separately.
+
+@page
+@node qwavheaderdump, qwavinfo, qwavfade, wav tools
+@section qwavheaderdump
+
+@command{qwavheaderdump} dumps (and fixes) wav headers
+
+@subsection synopsis
+@samp{qwavheaderdump @var{option}@dots{} @var{file}@dots{}}
+
+@subsection description
+@command{qwavheaderdump} reads a list of wav files and prints on standard output all its header values in text (no binary) form. also, it has ability to fix some of the headers in case they'd be incorrect.
+
+@subsection option list
+@table @samp
+@item -F
+@itemx --fix
+correct the header if there's any incorrect value. not all the fields are recoverable.
+@item -h
+@itemx --help
+show a brief help and exit.
+@item -q
+@itemx --quiet
+no output messages. don't show detected (and corrected) errors.
+@item -V
+@itemx --version
+show version and exit.
+@end table
+
+@page
+@node qwavinfo, qwavjoin, qwavheaderdump, wav tools
+@section qwavinfo
+
+@command{qwavinfo} show info from wav files.
+
+@subsection synopsis
+@samp{qwavinfo @var{option}@dots{} @var{file}@dots{}}
+
+@subsection description
+
+@command{qwavinfo} reads a list of wav files and prints on standard output some of its parameters: sample rate, bits per sample, mono/stereo and duration. a duration summary is appended at the end of the list.
+
+@subsection option list
+
+@table @samp
+@item -h
+@itemx --help
+show a brief help and exit.
+@item -s
+@itemx --summary-only
+show only the summary. do not show info from every file.
+@item -v
+@itemx --verbose
+show also the number of bytes and samples.
+@item -V
+@itemx --version
+show version and exit.
+@end table
+
+@c exemple...
+
+@page
+@node qwavjoin, qwavsilence, qwavinfo, wav tools
+@section qwavjoin
+
+@command{qwavjoin} joins wav files
+
+@subsection synopsis
+@samp{qwavjoin @var{option}@dots{} @var{file1} @var{file2}@dots{}}
+
+@subsection description
+@command{qwavjoin} reads a list of wav files and joins them in the specified order in one wav file. the files must have the same parameters (i.e. sampling rate, bytes per sample, @dots{}) in order that the joining can be done.
+
+@subsection option list
+@table @samp
+@item -h
+@itemx --help
+show a brief help and exit.
+@item -o @var{outfile}
+@itemx --output=@var{outfile}
+@var{outfile} is the name of the file where all the samples will be copied. if this option is not used, the samples from the second to the last file of the list will be appended to @var{file1}.
+@item -v
+@itemx --verbose
+show which operations are done.
+@item -V
+@itemx --version
+show version and exit.
+@end table
+
+@c exemple...
+
+@page
+@node qwavsilence, mp3 tools, qwavjoin, wav tools
+@section qwavsilence
+
+@command{qwavsilence} detects and shrinks silence sequences in wav files
+
+@subsection synopsis
+@samp{qwavsilence @var{option}@dots{} @var{file}@dots{}}
+
+@subsection description
+@command{qwavsilence} reads a list of wav files looking for silence sequences longer than a given value, possibly shrinking them.
+
+@subsection option list
+@table @samp
+@item -d @var{cutpoint}
+@itemx --duration=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the minimum duration of a silent sequence in a file to be reported. the default value is one second. this option overrides the option @option{--length} explained below.
+@item -h
+@itemx --help
+show a brief help and exit.
+@item -l @var{time}
+@itemx --length=@var{time}
+@var{time} (@pxref{specifying time}) specifies the minimum length(=duration) of a silent sequence in a file to be reported. this option is quite similar to the @option{--duration} option above. it's easier to use though not as powerful than the previous one. the default value is one second. this option overrides the @option{--duration} option explained above.
+@item -S
+@itemx --shrink
+when this option is set, all the silent sequences greater than the value of the @option{--duration} option will be shrinked down to @var{duration} and the file size truncated accordingly.
+@item -t @var{threshold}
+@itemx --threshold=@var{threshold}
+@var{threshold} is a percentage value respect the maximum (absolute) sample value. samples whose value is under the given @var{threshold} are considered silent. for example, a value of 2 means that all samples with absolute value under the 2% will be treated as silent samples. the default value is 0.
+@item -v
+@itemx --verbose
+show also sample information.
+@item -V
+@itemx --version
+show version and exit.
+@end table
+
+@c @subsection example
+
+@node mp3 tools, qmp3check, qwavsilence, top
+@chapter mp3 tools
+
+tests have been done only with mpeg version 1 layer iii streams, though it may (or not) work with other versions or layers.
+
+the tools to handle mp3 files are the following:
+
+@menu
+* qmp3check::             check and clean mp3 files@.
+* qmp3cut:: 		  extract and/or delete fragments from a mp3 file@.
+* qmp3info::              show info from mp3 files@.
+* qmp3join::              join multiple mp3 files in one@.
+* qmp3report::            generate simple reports for mp3 files and directories
+@end menu
+
+@iftex
+@ifnothtml
+@itemize @bullet
+@item @command{qmp3check}
+to check and clean mp3 files@.
+@item @command{qmp3cut}
+to extract and/or delete parts of a mp3 file@.
+@item @command{qmp3info}
+to show info from mp3 files@.
+@item @command{qmp3join}
+to join multiple mp3 files in one@.
+@item @command{qmp3report}
+to generate simple reports for mp3 files and directories
+@end itemize
+@end ifnothtml
+@end iftex
+
+@page
+@node qmp3check, qmp3cut, mp3 tools, mp3 tools
+@section qmp3check
+
+@command{qmp3check} checks and cleans mp3 streams
+
+@subsection synopsis
+@samp{qmp3check @var{option}@dots{} @var{file}@dots{}}
+
+@subsection description
+@command{qmp3check} reads mp3 streams looking for invalid frames or, simply, garbage. it can be used as a mp3 file checker but also as a mp3 file cleaner because it is able to strip garbage bits from the streams.
+
+@subsection option list
+@table @samp
+@item -D
+@itemx --delete
+delete invalid frames and garbage. use with care
+@item -h
+@itemx --help
+show a brief help and exit.
+@item -q
+@itemx --quiet
+no output messages
+@item -T
+@itemx --delete-tag
+delete tag (if exists). option @option{--delete} must be set.
+@item -v
+@itemx --verbose
+show more detailed info
+@item -V
+@itemx --version
+show version and exit.
+@end table
+
+@page
+@node qmp3cut, qmp3info, qmp3check, mp3 tools
+@section qmp3cut
+
+@command{qmp3cut} extracts and/or deletes parts of a mp3 file
+
+@subsection synopsis
+@samp{qmp3cut @var{option}@dots{} @var{file}}
+
+@subsection description
+@command{qmp3cut} allows to extract and/or delete a fragment of a mp3 file. some parameters must be supplied in order to define the start/size/end cut points and what to do then: either the fragment must be copied to another file or erased from the file (or both)
+
+@subsection general options
+@table @samp
+@item -d
+@itemx --delete
+deletes the fragment from the file. if option @option{--output} is used, deletion is always done after fragment extraction.
+@item -h
+@itemx --help
+show a brief help and exit.
+@item -o @var{outfile}
+@itemx --output=@var{outfile}
+@var{outfile} is the name of the file where all the frames in the given fragment will be copied. 
+@item -v
+@itemx --verbose
+verbose
+@item -V
+@itemx --version
+show version and exit.
+@end table
+
+@subsection cut options
+cut options are used to specify where the fragment begins and ends. there are two ways to do it: with time slices (easier) and with cut points (more complex but also more powerful). cut options are mandatory (which way is used is matter of your choice).
+
+if time slices are used, cut points options are automatically ignored.
+
+
+@subsubsection cut with time slices
+there is only one option:
+
+@table @samp
+@item -S @var{timeslice}
+@itemx --slice @var{timeslice}      
+@var{timeslice} (@pxref{specifying time}) specifies, in terms of time, where the cut begins and ends.
+@end table
+
+@subsubsection cut with cut points
+there are several options with cut points. cut points are used to specify at which frame the fragment begins (@option{--begin} and @option{--Begin}), ends (@option{--end} and @option{--End}), or which size it has (@option{--size}). at least, one cut option must be specified (non specified options take its default values). neither the options @option{--begin} and @option{--Begin}, and the options @option{--end} and @option{--End} can be used together; also, a begin, end and size option cannot be used at the same time.
+
+by default, the fragment begins at the first frame and ends at the last frame; there's no default value for size. 
+
+@table @samp
+
+@item -b @var{cutpoint}
+@itemx --set-begin-from-eof=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the first frame of the file that belongs to the cut counting from the end of the file.
+
+@item -B @var{cutpoint}
+@itemx --set-begin=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the first frame of the file that belongs to the cut counting from the beginning of the file.
+
+@item -e @var{cutpoint}
+@itemx --set-end-from-eof=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the last frame of the file that belongs to the cut counting from the end of the file.
+
+@item -E @var{cutpoint}
+@itemx --set-end=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the last frame of the file that belongs to the cut counting from the beginning of the file.
+
+@item -s @var{cutpoint}
+@itemx --size=@var{cutpoint}
+@var{cutpoint} (@pxref{cut points}) specifies the number of frames contained in the cut.
+@end table
+
+@subsection examples
+
+@enumerate
+
+@item
+to get the last ten seconds of a file
+@example
+qmp3cut -b 10s -o outfile.mp3 infile.mp3
+@end example
+
+@item
+four different ways to get the first minute of a file:
+@example
+qmp3cut -S -1:0 -o outfile.mp3 infile.mp3
+qmp3cut -S -60 -o outfile.mp3 infile.mp3
+qmp3cut -E 1m -o outfile.mp3 infile.mp3
+qmp3cut -s 1m -o outfile.mp3 infile.mp3
+@end example
+
+@item
+four ways of getting the second quarter of a file:
+@example
+qmp3cut -S 15:0-30:0 -o outfile.mp3 infile.mp3
+qmp3cut -B 15m -E 30m -o outfile.mp3 infile.mp3
+qmp3cut -s 15m -E 30m -o outfile.mp3 infile.mp3
+qmp3cut -B 15m -s 15m -o outfile.mp3 infile.mp3
+@end example
+
+@end enumerate
+
+@page
+@node qmp3info, qmp3join, qmp3cut, mp3 tools
+@section qmp3info
+
+@command{qmp3info} show info from mp3 files.
+
+@subsection synopsis
+@samp{qmp3info @var{option}@dots{} @var{file}@dots{}}
+
+@subsection description
+
+@command{qmp3info} reads a list of mp3 files and prints on standard output some of its parameters: version, layer, sample rate, bit rate, duration and tag. a duration summary is appended at the end of the list.
+
+@subsection option list
+
+@table @samp
+@item -c
+@itemx --check
+check the entire stream (slower but accurate). all the frames of the stream are read and the total duration is exactly computed. this option is automatically activated if the stream appears to be vbr (have different bit rate frames).
+@item -h
+@itemx --help
+show a brief help and exit.
+@item -s
+@itemx --summary-only
+show only the summary. do not show info from every file.
+@item -v
+@itemx --verbose
+show also the number of bytes and frames.
+@item -V
+@itemx --version
+show version and exit.
+@end table
+
+@c exemple...
+
+@subsection bugs
+variable bit rate (vbr) streams are detected by reading the initial 5 frames in the stream. if their bit rate field differs, the @option{--check} option is activated automatically.
+if vbr is not detected, @command{qmp3info} reads only the first frame in the stream and calculates the duration supposing that (1) the entire stream is composed by valid frames and (2) all the frames have the same bit rate. this is a fast way to compute the duration of the stream, but it is not exact: there's an error of 0.3% aprox. if you want to be accurate, or @command{qmp3info} is unable to detect a vbr stream, use @option{--check}.
+
+@page
+@node qmp3join, qmp3report, qmp3info, mp3 tools
+@section qmp3join
+
+@command{qmp3join} joins mp3 files
+
+@subsection synopsis
+@samp{qmp3join @var{option}@dots{} @var{file1} @var{file2}@dots{}}
+
+@subsection description
+@command{qmp3join} reads a list of mp3 files and joins them in one mp3 file in the specified order. some conditions must be met for the parameters of each of the files (see the notes subsection below).
+
+@subsection option list
+@table @samp
+@item -f
+@itemx --force
+force join bypassing bit rate checks. by default, to join two files they must be both vbr (have variable bit rate) or have the same bit rate. using this option you can skip this check.
+@item -h
+@itemx --help
+show a brief help and exit.
+@item -o @var{outfile}
+@itemx --output=@var{outfile}
+@var{outfile} is the name of the file where all the frames will be copied. if this option is not used, the frames from the second to the last file of the list will be appended to @var{file1}.
+@item -v
+@itemx --verbose
+show which operations are done.
+@item -V
+@itemx --version
+show version and exit.
+@end table
+
+@c exemple...
+
+@subsection notes
+both mp3 must have the same bit rate or (both) must have a variable bit rate. this restriction can be by-passed with the @option{--force} flag.
+
+before joining, all the streams are tested for validity. this is a time consuming operation. if the streams are not found clean, the join operation is aborted, so if you want to join @i{dirty} streams or simply qmp3join detects a clean stream as dirty, please report this as a bug and/or use @command{cat}.
+
+due to the mp3 file format characteristics, @command{qmp3join} can be viewed like a @i{better but restrictive} @command{cat} for mp3 files.
+
+@page
+@node qmp3report, cut points, qmp3join, mp3 tools
+@section qmp3report
+
+@command{qmp3report} reports mp3 files and directories
+
+@subsection synopsis
+@samp{qmp3report @var{option}@dots{} @var{file}@dots{}}
+
+@subsection description
+@command{qmp3report} reads mp3 files or directories containing mp3 files and gives information about them. @command{qmp3report} can output the reports with plain text or in html format. using the latter format, you can @i{navigate} your mp3 directories with a web browser.
+
+@subsection option list
+@table @samp
+@item -a
+@itemx --all-files
+report all files, not just files with suffix @file{.mp3}.
+@item -A
+@itemx --show-all
+implies @option{--dirs}, @option{--files} and @option{--summary}. show report for files and directories and a summary report.
+@item -d
+@itemx --dirs
+show a report for every directory containing reported files/directories. note that if option @option{--all-files} is not set, only will be reported those directories containing mp3 files.
+@item -f
+@itemx --files
+show a report for every reportable file (see also @option{--all-files}).
+@item -h
+@itemx --help
+show a brief help and exit.
+@item -H
+@itemx --html
+output in html format (default is plain text).
+@item -r
+@itemx --recursive
+scan directories.
+@item -s
+@itemx --summary
+show a summary report.
+@item -S
+@itemx --split
+split report across visited directories. @command{qmp3report} leaves in each visited directory a file with the report for that directory, independently of the output format. the name of the report file is the name of the directory with extension @file{.txt} or @file{.html} depending on the selected output format.
+@item -v
+@itemx --verbose
+show more detailed info.
+@item -V
+@itemx --version
+show version and exit.
+@end table
+
+@c exemple... qmp3report -rA .
+@c exemple... qmp3report -rAHS .
+
+@subsection bugs
+
+variable bit rate (vbr) streams are detected by reading the initial 5 frames in the stream. if their bit rate field differs, the entire stream is read to compute the duration time with accuracy (@pxref{qmp3info}).
+
+if vbr is not detected, @command{qmp3report} reads only the first frame in the stream and calculates the duration supposing that (1) the entire stream is composed by valid frames and (2) all the frames have the same bit rate. this is a fast way to compute the duration of the stream, but it is not exact: there's an error of 0.3% aprox.
+
+the @i{htmlize} function, which converts file names in a suitable form for html format (ie. replacing blanks with '@i{%20}'), is not bulletproof.
+
+@node cut points, specifying time, qmp3report, top
+@appendix cut points
+
+cut points are used to specify point in a sound file. they can also be used to speciy a size or a time duration using the beginning of the file as start reference. a cut point has the following form:
+
+@var{value}[@var{format}]
+
+@c farcir tot això d'exemples!!!
+
+@c some of the commands have options referring to a point (a begin or an end of a fragment for qwavcut and qmp3cut) or a part of a file (a duration for qwavfade or qwavsilence, a size for qwavcut or qmp3cut).
+
+in all cases, a positive integer @var{value} is required. the wav tools treat this number as a number of samples, whereas the mp3 tools treat this number as a number of frames. since most of the times is hard to specify a point (or size, or duration) in a file in terms of samples or frames, some modifiers are accepted. these modifiers consist in a single letter that must be written behind the number without leaving any blank.
+
+@appendixsec cut points modifiers
+
+these are the valid modifiers and how they modify the interpretation of @var{value}:
+
+@table @code
+@item j
+milliseconds
+@item s
+seconds
+@item m
+minutes
+@item b
+bytes
+@item k
+kbytes (1024 bytes)
+@item M
+megabytes (1024 kbytes)
+@end table
+
+in either case, the given values will be rounded to an integer number of samples/frames.
+
+@node specifying time, , cut points, top
+@appendix specifying time
+
+time specifiers are a easier (more @i{human}) way than cut options to specify points in a file.  
+
+a time specifier has the following form:
+
+	[[@var{h}:]@var{m}:]@var{s}[.@var{ms}]
+
+where:
+
+@table @code
+@item @var{h}
+hours
+@item @var{m}
+minutes
+@item @var{s}
+seconds
+@item @var{ms}
+milliseconds
+@end table
+	
+as you can see, time specifiers are easier to use but less powerful than cut options (which can also specify a point in a file in terms of bytes or frames/samples).
+
+@c posar-hi exemples
+
+@appendixsec time slices
+
+time slices are composed by two time specifiers designing a range (slice) of time:
+
+@var{begin}-@var{end}
+
+where @var{begin} and @var{end} are time specifiers. they can be not specified, meaning, respectively, the beginning and the end of the file.
+
+@c més exemples
+
+@bye

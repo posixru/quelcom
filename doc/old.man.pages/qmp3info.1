@@ -1,0 +1,59 @@
+.TH qmp3info 1 "february 2001" "quelcom 0.4.0" "quelcom man pages"
+
+.SH NAME
+qmp3info \- show info from mp3 files
+
+.SH SYNOPSIS
+.na
+.B qmp3info
+.RI [ option ]...\  file ...
+.ad
+
+.SH DESCRIPTION 
+.LP
+\fBqmp3info\fR reads a list of mp3 files and prints on standard output some of its parameters: version, layer, sample rate, bit rate, duration and tag. a duration summary is appended at the end of the list.
+
+.SH OPTIONS
+.TP
+.BR \-c ,\  \-\-check
+check the entire stream (slower but accurate). all the frames of the stream are read and the total duration is exactly computed. this option is automatically activated if the stream appears to be vbr (have different bit rate frames).
+.TP
+.BR \-h ,\  \-\-help
+show a brief help and exit.
+.TP
+.BR \-s ,\  \-\-summary\-only
+show only the summary. do not show info from every file.
+.TP
+.BR \-v ,\  \-\-verbose
+show also the number of bytes and frames.
+.TP
+.BR \-V ,\  \-\-version
+show version and exit.
+.PP
+
+.SH BUGS
+.LP
+variable bit rate (vbr) streams are detected by reading the initial (5) frames in the stream. if their bit rate field differs, the \fB\-\-check\fR option is activated automatically.
+.LP
+if vbr is not detected, \fBqmp3info\fR reads only the first frame in the stream and calculates the duration supposing that (1) the entire stream is composed by valid frames and (2) all the frames have the same bit rate. this is a fast way to compute the duration of the stream, but it is not exact: there's an error of 0\.3% aprox. if you want to be accurate, or \fBqmp3info\fR is unable to detect a vbr stream, use \fB\-\-check\fR.
+.LP
+tests have been done only with mpeg version 1 layer iii streams, though it may (or not) work with other versions or layers.
+
+.SH AUTHOR 
+.LP
+dmanye@etse.urv.es
+.br
+http://www.etse.urv.es/~dmanye/quelcom/quelcom.html
+
+.SH SEE ALSO
+.BR qmp3join (1),
+.BR qmp3cut (1),
+.BR qmp3check (1),
+.BR qmp3report (1)
+.br
+.BR qwavinfo (1),
+.BR qwavjoin (1),
+.BR qwavcut (1),
+.BR qwavsilence (1),
+.BR qwavfade (1),
+.BR qwavheaderdump (1)

@@ -1,0 +1,135 @@
+.TH qwavfade 1 "february 2001" "quelcom 0.4.0" "quelcom man pages"
+
+.SH NAME
+qwavfade \- fade in/out wav files
+
+.SH SYNOPSIS
+.na
+.B qwavfade
+.RI [ option ]...\  file ...
+
+.ad
+
+.SH DESCRIPTION 
+.LP
+\fBqwavfade\fR modifies a wav file applying on it a fade in or a fade out or both.
+.LP
+a fade consists in modifying progressively the level of the wav as if you were slowly increasing or decreasing the volume. a fade in consists in increasing the volume starting from a low level at the beginning of the wav. a fade out consists in decreasing the volume to a low level at the end of the wav. 
+
+.SH OPTIONS
+.TP
+\fB\-d\fR <\fIduration\fR>[<\fIformat\fR>], \fB\-\-duration\fR=<\fIduration\fR>[<\fIformat\fR>]
+\fIduration\fR is a positive integer that specifies the duration of the fade. the value is treated as a sample number unless a format specifier is used. see the \fBFORMATS\fR section below for information. the default value is five seconds. this option overrides the \fI\-\-length\fR option explained below.
+.TP
+.BR \-h ,\  \-\-help
+show a brief help and exit.
+.TP
+.BR \-i ,\  \-\-in
+just fade in. don't fade out. by default, fade in and fade out.
+.TP
+\fB\-l\fR <\fItime point\fR>, \fB\-\-length\fR=<\fItime point\fR>
+\fItime point\fR specifies the length(=duration) of the fade. see the \fBTIME POINTS\fR section below for information. this option is quite similar to the \fI\-\-duration\fR option above. its easier to use though not as powerful than the previous one. the default value is five seconds. this option overrides the \fI\-\-duration\fR option explained above.
+.TP
+.BR \-o ,\  \-\-out
+just fade out. don't fade in. by default, fade in and fade out.
+.TP
+.BR \-t ,\  \-\-test
+this option can be used to create and fade a tests files instead of modifying to original file. a test file will be created for each type of selected fade (in or out). the name of the test file will be \fBfadein.\fR<\fIfile\fR> or \fBfadeout.\fR<\fIfile\fR. the duration of the test files is the fade duration plus two seconds.
+.TP
+.BR \-v ,\  \-\-verbose
+show more detailed info.
+.TP
+.BR \-V ,\  \-\-version
+show version and exit.
+
+.SH TIME POINTS
+the time points is a easier way to specify the length (or duration) of a fade with a millisecond resolution. here's its formal form:
+
+[\fIh\fB:\fR[\fIm\fB:\fR]]\fBs\fR[\fB.\fIms\fR]
+where
+.TP
+.B h
+value is a positive integer meaning hours.
+.TP
+.B m
+value is a positive integer meaning minutes.
+.TP
+.B s
+value is a positive integer meaning seconds.
+.TP
+.B ms
+value is a positive integer meaning milliseconds.
+
+.LP
+only the seconds specifier is required. here are a couple of examples:
+.TP
+1:23:45.67
+.TP
+2:0.001
+
+.SH FORMATS
+.LP
+the \fB\-\-duration\fR option can have also an optional modifier. if this modifier is not used, then the value provided with the corresponding cut option will be interpreted as a number of samples. since most of the times will be difficult to specify a duration in terms of samples, the following modifiers are provided:
+.TP
+.B j
+value is interpreted as milliseconds.
+.TP
+.B m
+value is interpreted as minutes.
+.TP
+.B s
+value is interpreted as seconds.
+.TP
+.B b
+value is interpreted as bytes.
+.TP
+.B k
+value is interpreted as kbytes (1024 bytes).
+.TP
+.B M
+value is interpreted as megabytes (1024 kbytes).
+.LP
+in either case, the values specified will be rounded to get an integer number of samples.
+
+.SH EXAMPLE
+suppose you want to fade in and out the fantastic song \fIlive.in.concert.wav\fR using a fade duration of 5 seconds:
+.TP
+first we are going to test:
+.B qwavfade -t -d 7s live.in.concert.wav
+.TP
+hear the test fades:
+.B my-favourite-wav-player fadein.live.in.concert.wav
+.br
+.B my-favourite-wav-player fadeout.live.in.concert.wav
+.LP
+if you want to try with another duration, jump to the first step and change the duration argument. 
+.TP
+and if you're happy with the tests:
+.B qwavfade -d 5s live.in.concert.wav
+
+.SH NOTES
+.LP
+\fBqwavfade\fR doesn't allow both types of fades (in and out) to overlap. if you want to fade in and out a wav file, and the two regions to fade overlap, then probably you made a mistake. in any case, you can do it fading separately.
+
+.SH BUGS
+.LP
+tests has been done only with 44100 Hz 16 bit stereo files, though it may work with mono/stereo 8/16 bits files.
+
+.SH AUTHOR
+.LP
+dmanye@etse.urv.es
+.br
+http://www.etse.urv.es/~dmanye/quelcom/quelcom.html
+
+.SH SEE ALSO
+.BR qwavinfo (1),
+.BR qwavjoin (1),
+.BR qwavcut (1),
+.BR qwavsilence (1),
+.BR qwavheaderdump (1)
+.br
+.BR qmp3info (1),
+.BR qmp3join (1),
+.BR qmp3cut (1),
+.BR qmp3check (1),
+.BR qmp3report (1)

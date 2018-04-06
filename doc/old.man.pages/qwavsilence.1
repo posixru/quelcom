@@ -1,0 +1,82 @@
+.TH qwavsilence 1 "february 2001" "quelcom 0.4.0" "quelcom man pages"
+
+.SH NAME
+qwavsilence \- detect and shrink silence sequences in wav files
+
+.SH SYNOPSIS
+.na
+.B qwavsilence
+.RI [ option ]...\  file ...
+.ad
+
+.SH DESCRIPTION 
+.LP
+.B qwavsilence
+reads a list of wav files looking for silence sequences.
+
+.SH OPTIONS
+.TP
+\fB\-d\fR <\fIduration\fR>[<\fIformat\fR>], \fB\-\-duration\fR=<\fIduration\fR>[<\fIformat\fR>]
+\fIduration \fRis a positive integer that specifies the minimum duration of a silent sequence on a file to be reported. the value is treated as a sample number unless a format specifier is used. see the \fBFORMATS\fR section below for information. the default value is one second.
+.TP
+.BR \-h ,\  \-\-help
+show a brief help and exit.
+.TP
+\fB\-S\fR, \fB\-\-shrink\fR
+when this option is set, all the silent sequences greater than \fIduration\fR will be shrinked down to \fIduration\fR and the file size truncated accordingly.
+.TP
+\fB\-t\fR <\fIthreshold\fR>, \fB\-\-threshold\fR=<\fIthreshold\fR>
+\fIthreshold\fR is a percentage value respect the maximum (absolute) sample value. samples whose value is under the given \fIthreshold\fR are considered silent. for example, a value of 2 means that all samples with absolute value under the 2% will be treated as silent samples. the default value is 0.
+.TP
+.BR \-v ,\  \-\-verbose
+show more detailed info.
+.TP
+.BR \-V ,\  \-\-version
+show version and exit.
+
+.SH FORMATS
+.LP
+the following modifiers are provided:
+.TP
+.B j
+value is interpreted as milliseconds.
+.TP
+.B m
+value is interpreted as minutes.
+.TP
+.B s
+value is interpreted as seconds.
+.TP
+.B b
+value is interpreted as bytes.
+.TP
+.B k
+value is interpreted as kbytes (1024 bytes).
+.TP
+.B M
+value is interpreted as megabytes (1024 kbytes).
+.LP
+in either case, the values specified will be rounded to get an integer number of samples.
+
+.SH BUGS
+.LP
+tests has been done only with 44100 Hz 16 bit stereo files, though it may work with mono/stereo 8/16 bits files.
+
+.SH AUTHOR 
+.LP
+dmanye@etse.urv.es
+.br
+http://www.etse.urv.es/~dmanye/quelcom/quelcom.html
+
+.SH SEE ALSO
+.BR qwavinfo (1),
+.BR qwavjoin (1),
+.BR qwavcut (1),
+.BR qwavfade (1),
+.BR qwavheaderdump (1)
+.br
+.BR qmp3info (1),
+.BR qmp3join (1),
+.BR qmp3cut (1),
+.BR qmp3check (1),
+.BR qmp3report (1)

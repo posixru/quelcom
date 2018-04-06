@@ -1,0 +1,123 @@
+.TH qwavcut 1 "february 2001" "quelcom 0.4.0" "quelcom man pages"
+
+.SH NAME
+qwavcut \- extract and/or delete parts of a wav file
+
+.SH SYNOPSIS
+.na
+.B qwavcut
+.RI [ option ]...\  file
+.ad
+
+.SH DESCRIPTION 
+.LP
+\fBqwavcut\fR allows to extract and/or delete a fragment of a wav file. some parameters must be supplied in order to define the start/size/end cut points and what to do then: either the fragment must be copied to another file or erased from the file (or both)
+
+.SH GENERAL OPTIONS
+.TP
+.BR \-d ,\  \-\-delete
+deletes the fragment from the file. if option \fB\-\-output\fR is used, deletion action is always done after fragment extraction.
+.TP
+.BR \-h ,\  \-\-help
+show a brief help and exit.
+.TP
+\fB\-o\fR <\fIoutfile\fR>, \fB\-\-output\fR=<\fIoutfile\fR>
+\fIoutfile\fR is the file where the samples contained in the specified cut will be copied.
+.TP
+.BR \-V ,\  \-\-version
+show version and exit.
+
+.SH CUT OPTIONS
+cut options are used to specify at which sample the fragment begins (options \fB-b\fR or \fB-B\fR), ends (options \fB-e\fR and \fB-E\fR), or which size it has (option \fB-s\fR). at least, one cut option must be specified. neither the options \fB-b\fR and \fB-B\fR, and the options \fB-e\fR and \fB-E\fR can be used together; also, a begin, end and size option can be used at the same time.
+.LP
+by default, the fragment begins at the first sample and ends at the last sample; there's no default value for size. 
+.LP
+all the values are treated as a sample number unless a format specifier is used. see the \fBFORMATS\fR section below for information. all values must be positive integer.
+.TP
+\fB\-b\fR <\fIbegin\fR>[<\fIformat\fR>], \fB\-\-set-begin-from-eof\fR=<\fIbegin\fR>[<\fIformat\fR>]
+\fIbegin\fR specifies the first sample of the file that belongs to the cut counting from the end of the file.
+.TP
+\fB\-B\fR <\fIbegin\fR>[<\fIformat\fR>], \fB\-\-set-begin\fR=<\fIbegin\fR>[<\fIformat\fR>]
+\fIbegin\fR specifies the first sample of the file that belongs to the cut counting from the beginning of the file.
+.TP
+\fB\-e\fR <\fIend\fR>[<\fIformat\fR>], \fB\-\-set-end-from-eof\fR=<\fIend\fR>[<\fIformat\fR>]
+\fIend\fR specifies the last sample of the file that belongs to the cut counting from the end of the file.
+.TP
+\fB\-E\fR <\fIend\fR>[<\fIformat\fR>], \fB\-\-set-end\fR=<\fIend\fR>[<\fIformat\fR>]
+\fIend\fR specifies the last sample of the file that belongs to the cut counting from the beginning of the file.
+.TP
+\fB\-s\fR <\fIsize\fR>[<\fIformat\fR>], \fB\-\-set-size\fR=<\fIsize\fR>[<\fIformat\fR>]
+\fIsize\fR specifies the number of samples contained in the cut.
+
+.SH FORMATS
+.LP
+cut options can have also an optional modifier. if this modifier is not used, then the value provided with the corresponding cut option will be interpreted as a number of samples. since most of the times will be difficult to specify a cut in terms of samples, the following modifiers are provided:
+.TP
+.B j
+value is interpreted as milliseconds.
+.TP
+.B m
+value is interpreted as minutes.
+.TP
+.B s
+value is interpreted as seconds.
+.TP
+.B b
+value is interpreted as bytes.
+.TP
+.B k
+value is interpreted as kbytes (1024 bytes).
+.TP
+.B M
+value is interpreted as megabytes (1024 kbytes).
+.LP
+in either case, the values specified will be rounded to get an integer number of samples.
+
+.SH EXAMPLES
+.LP
+here are some examples:
+
+.TP
+to get the last ten seconds of a file:
+.B qwavcut -b 10s -o outfile.wav infile.wav
+.TP
+two ways of getting the first minute of a file:
+.B qwavcut -E 1m -o outfile.wav infile.wav
+.br
+.B qwavcut -s 1m -o outfile.wav infile.wav
+.TP
+three ways of getting the second quarter of a file:
+.B qwavcut -B 15m -E 30m -o outfile.wav infile.wav
+.br
+.B qwavcut -s 15m -E 30m -o outfile.wav infile.wav
+.br
+.B qwavcut -B 15m -s 15m -o outfile.wav infile.wav
+
+.SH NOTES
+.LP
+if neither the options \fB\-\-output\fR nor \fB\-\-delete\fR are specified, the program will do nothing.
+.LP
+when cutting at the end, a simple \fItruncate\fR call is needed. but when cutting in the middle or in the beginning, all the data behind the cut must be moved ahead and, depending on the amount of the data to be moved, this can be a time consuming operation.
+
+.SH BUGS
+.LP
+tests has been done only with 44100 Hz 16 bit stereo files, though it may work with mono/stereo 8/16 bits files.
+
+.SH AUTHOR
+.LP
+dmanye@etse.urv.es
+.br
+http://www.etse.urv.es/~dmanye/quelcom/quelcom.html
+
+.SH SEE ALSO
+.BR qwavinfo (1),
+.BR qwavjoin (1),
+.BR qwavsilence (1),
+.BR qwavfade (1),
+.BR qwavheaderdump (1)
+.br
+.BR qmp3info (1),
+.BR qmp3join (1),
+.BR qmp3cut (1),
+.BR qmp3check (1),
+.BR qmp3report (1)

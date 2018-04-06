@@ -1,0 +1,66 @@
+.TH qmp3join 1 "february 2001" "quelcom 0.4.0" "quelcom man pages"
+
+.SH NAME
+qmp3join \- join mp3 files
+
+.SH SYNOPSIS
+.na
+.B qmp3join
+.RI [ option ]...\  file1\ file2 ...
+.ad
+
+.SH DESCRIPTION 
+.LP
+.B qmp3join
+reads a list of mp3 files and joins them in one mp3 file in the specified order. some conditions must be met for the parameters of each of the files (see \fBNOTES\fR section).
+
+.SH OPTIONS
+.TP
+.BR \-f ,\  \-\-force
+force join bypassing bit rate checks. by default, to join two files they must be both vbr (have variable bit rate) or have the same bit rate. using this option you can skip this check.
+.TP
+.BR \-h ,\  \-\-help
+show a brief help and exit.
+.TP
+\fB\-o\fR <\fIoutfile\fR>, \fB\-\-output\fR=<\fIoutfile\fR>
+.I outfile
+is the name of the file where all the frames will be copied. if this option is not used, the frames from the second to the last file of the list will be appended to
+.I file1. 
+.TP
+.BR \-v ,\  \-\-verbose
+show which operations are done.
+.TP
+.BR \-V ,\  \-\-version
+show version and exit.
+
+.SH NOTES
+.LP
+(all) the following parameters are required to be common for two mp3 files to be joined: [fill this!!!]. also, about the bit rate parameter, both mp3 must have the same value or (both) must have a variable bit rate. this restriction would be by-passable with the \fI--force\fR flag.
+.LP
+before joining, all the streams are tested for validity. this is a time consuming operation.
+.LP
+in any case, \fBqmp3join\fR can be viewed like a \fIbetter but restrictive \fBcat\fR for mp3 files, due to the mp3 file format characteristics.
+
+.SH BUGS
+.LP
+tests have been done only with mpeg version 1 layer iii streams, though it may (or not) work with other versions/layers.
+
+.SH AUTHOR
+.LP
+dmanye@etse.urv.es
+.br
+http://www.etse.urv.es/~dmanye/quelcom/quelcom.html
+
+.SH SEE ALSO
+.BR qmp3info (1),
+.BR qmp3cut (1),
+.BR qmp3check (1),
+.BR qmp3report (1)
+.br
+.BR qwavinfo (1),
+.BR qwavjoin (1),
+.BR qwavcut (1),
+.BR qwavsilence (1),
+.BR qwavfade (1),
+.BR qwavheaderdump (1)
+

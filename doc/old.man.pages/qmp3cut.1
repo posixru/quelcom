@@ -1,0 +1,128 @@
+.TH qmp3cut 1 "february 2001" "quelcom 0.4.0" "quelcom man pages"
+
+.SH NAME
+qmp3cut \- extract and/or delete parts of a mp3 file
+
+.SH SYNOPSIS
+.na
+.B qmp3cut
+.RI [ option ]...\  file
+.ad
+
+.SH DESCRIPTION 
+.LP
+\fBqmp3cut\fR allows to extract and/or delete a fragment of a mp3 file. some parameters must be supplied in order to define the start/size/end cut points and what to do then: either the fragment must be copied to another file or erased from the file (or both)
+
+.SH GENERAL OPTIONS
+.TP
+.BR \-d ,\  \-\-delete
+deletes the fragment from the file. if option \fB\-\-output\fR is used, deletion action is always done after fragment extraction.
+.TP
+.BR \-h ,\  \-\-help
+show a brief help and exit.
+.TP
+\fB\-o\fR <\fIoutfile\fR>, \fB\-\-output\fR=<\fIoutfile\fR>
+\fIoutfile\fR is the file where the frames contained in the specified fragment will be copied.
+.TP
+.BR \-v ,\  \-\-verbose
+verbose.
+.TP
+.BR \-V ,\  \-\-version
+show version and exit.
+
+.SH CUT OPTIONS
+cut options are used to specify at which frame the fragment begins (options \fB-b\fR or \fB-B\fR), ends (options \fB-e\fR and \fB-E\fR), or which size it has (option \fB-s\fR). at least, one cut option must be specified. neither the options \fB-b\fR and \fB-B\fR, and the options \fB-e\fR and \fB-E\fR can be used together; also, a begin, end and size option can be used at the same time.
+.LP
+by default, the fragment begins at the first frame and ends at the last frame; there's no default value for size. 
+.LP
+all the values are treated as a frame number unless a format specifier is used. see the \fBFORMATS\fR section below for information. values must be positive integer.
+.TP
+\fB\-b\fR <\fIbegin\fR>[<\fIformat\fR>], \fB\-\-set-begin-from-eof\fR=<\fIbegin\fR>[<\fIformat\fR>]
+\fIbegin\fR specifies the first frame of the file that belongs to the cut counting from the end of the file.
+.TP
+\fB\-B\fR <\fIbegin\fR>[<\fIformat\fR>], \fB\-\-set-begin\fR=<\fIbegin\fR>[<\fIformat\fR>]
+\fIbegin\fR specifies the first frame of the file that belongs to the cut counting from the beginning of the file.
+.TP
+\fB\-e\fR <\fIend\fR>[<\fIformat\fR>], \fB\-\-set-end-from-eof\fR=<\fIend\fR>[<\fIformat\fR>]
+\fIend\fR specifies the last frame of the file that belongs to the cut counting from the end of the file.
+.TP
+\fB\-E\fR <\fIend\fR>[<\fIformat\fR>], \fB\-\-set-end\fR=<\fIend\fR>[<\fIformat\fR>]
+\fIend\fR specifies the last frame of the file that belongs to the cut counting from the beginning of the file.
+.TP
+\fB\-s\fR <\fIsize\fR>[<\fIformat\fR>], \fB\-\-set-size\fR=<\fIsize\fR>[<\fIformat\fR>]
+\fIsize\fR specifies the number of frames contained in the cut.
+
+.SH FORMATS
+.LP
+cut options can have also an optional modifier. if this modifier is not used, then the value provided with the corresponding cut option will be interpreted as a number of frames. since most of the times will be difficult to specify a cut in terms of frames, the following modifiers are provided:
+.TP
+.B j
+value is interpreted as milliseconds.
+.TP
+.B m
+value is interpreted as minutes.
+.TP
+.B s
+value is interpreted as seconds.
+.TP
+.B b
+value is interpreted as bytes.
+.TP
+.B k
+value is interpreted as kbytes (1024 bytes).
+.TP
+.B M
+value is interpreted as megabytes (1024 kbytes).
+.LP
+in either case, the values specified will be rounded to get an integer number of frames.
+
+.SH EXAMPLES
+.LP
+here are some examples:
+
+.TP
+to get the last ten seconds of a file:
+.B qmp3cut -b 10s -o outfile.mp3 infile.mp3
+.TP
+two ways of getting the first minute of a file:
+.B qmp3cut -E 1m -o outfile.mp3 infile.mp3
+.br
+.B qmp3cut -s 1m -o outfile.mp3 infile.mp3
+.TP
+three ways of getting the second quarter of a file:
+.B qmp3cut -B 15m -E 30m -o outfile.mp3 infile.mp3
+.br
+.B qmp3cut -s 15m -E 30m -o outfile.mp3 infile.mp3
+.br
+.B qmp3cut -B 15m -s 15m -o outfile.mp3 infile.mp3
+
+.SH NOTES
+.LP
+if neither the options \fB\-\-output\fR nor \fB\-\-delete\fR are specified, the program will do nothing.
+
+.SH BUGS
+.LP
+usually, the \fBmpg123\fR player (and any other app mp3-read capable) report messages in the way like "cannot rewind by XXX bytes" where XXX is a negative value on streams extracted with \fBqmp3cut\fR. this is due to frame dependency (frame decoding depends sometimes of neighbourhood frames when bit reservoir technique is used at encoding time) and possibly will be corrected in a (near?) future.
+.LP
+there's no support for variable bit rate (vbr) files.
+.LP
+tests have been done only with mpeg version 1 layer iii streams, though it may (or not) work with other versions/layers.
+
+.SH AUTHOR
+.LP
+dmanye@etse.urv.es
+.br
+http://www.etse.urv.es/~dmanye/quelcom/quelcom.html
+
+.SH SEE ALSO
+.BR qmp3info (1),
+.BR qmp3join (1),
+.BR qmp3check (1),
+.BR qmp3report (1)
+.br
+.BR qwavinfo (1),
+.BR qwavjoin (1),
+.BR qwavcut (1),
+.BR qwavsilence (1),
+.BR qwavfade (1),
+.BR qwavheaderdump (1)

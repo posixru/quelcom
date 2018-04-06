@@ -1,0 +1,57 @@
+.TH qmp3check 1 "february 2001" "quelcom 0.4.0" "quelcom man pages"
+
+.SH NAME
+qmp3check \- check and clean mp3 streams
+
+.SH SYNOPSIS
+.na
+.B qmp3check
+.RI [ option ]...\  file ...
+.ad
+
+.SH DESCRIPTION 
+.LP
+\fBqmp3check\fR reads mp3 streams looking for invalid frames or, simply, garbage. it can be used as a mp3 file checker but also as a mp3 file cleaner because it is able to strip garbage bits from the streams.
+
+.SH OPTIONS
+.TP
+.BR \-D ,\  \-\-delete
+delete invalid frames and garbage. use with care
+.TP
+.BR \-h ,\  \-\-help
+show a brief help and exit
+.TP
+.BR \-q ,\  \-\-quiet
+no output messages
+.TP
+.BR \-T ,\  \-\-delete\-tag
+delete tag (if exists). option \fB\-\-delete\fR must be set.
+.TP
+.BR \-v ,\  \-\-verbose
+show more detailed info
+.TP
+.BR \-V ,\  \-\-version
+show version and exit
+
+.SH BUGS
+.LP
+tests have been done only with mpeg version 1 layer iii streams, though it may (or not) work with other versions/layers.
+
+.SH AUTHOR
+.LP
+dmanye@etse.urv.es
+.br
+http://www.etse.urv.es/~dmanye/quelcom/quelcom.html
+
+.SH SEE ALSO
+.BR qmp3info (1),
+.BR qmp3join (1),
+.BR qmp3cut (1),
+.BR qmp3report (1)
+.br
+.BR qwavinfo (1),
+.BR qwavjoin (1),
+.BR qwavcut (1),
+.BR qwavsilence (1),
+.BR qwavfade (1),
+.BR qwavheaderdump (1)

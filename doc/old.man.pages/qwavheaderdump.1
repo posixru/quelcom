@@ -1,0 +1,51 @@
+.TH qwavheaderdump 1 "february 2001" "quelcom 0.4.0" "quelcom man pages"
+
+.SH NAME
+qwavheaderdump \- dump (and fix) wav headers
+
+.SH SYNOPSIS
+.na
+.B qwavheaderdump
+.RI [ option ]...\  file ...
+.ad
+
+.SH DESCRIPTION 
+.LP
+\fBqwavheaderdump\fR reads a list of wav files and prints on standard output all its header values in text (no binary) form. also, it has ability to fix some of the headers in case they'd be incorrect.
+
+.SH OPTIONS
+.TP
+.BR \-F ,\  \-\-fix
+correct the header if there's any incorrect value. not all the fields are recoverable.
+.TP
+.BR \-h ,\  \-\-help
+show a brief help and exit.
+.TP
+.BR \-q ,\  \-\-quiet
+no output messages. don't show detected (and corrected) errors.
+.TP
+.BR \-V ,\  \-\-version
+show version and exit.
+
+.SH BUGS
+.LP
+tests has been done only with 44100 Hz 16 bit stereo files, though it may work with mono/stereo 8/16 bits files.
+
+.SH AUTHOR 
+.LP
+dmanye@etse.urv.es
+.br
+http://www.etse.urv.es/~dmanye/quelcom/quelcom.html
+
+.SH SEE ALSO
+.BR qwavinfo (1),
+.BR qwavjoin (1),
+.BR qwavcut (1),
+.BR qwavsilence (1),
+.BR qwavfade (1)
+.br
+.BR qmp3info (1),
+.BR qmp3join (1),
+.BR qmp3cut (1),
+.BR qmp3check (1),
+.BR qmp3report (1)

@@ -1,0 +1,51 @@
+.TH qwavinfo 1 "february 2001" "quelcom 0.4.0" "quelcom man pages"
+
+.SH NAME
+qwavinfo \- show info from wav files
+
+.SH SYNOPSIS
+.na
+.B qwavinfo
+.RI [ option ]...\  file ...
+.ad
+
+.SH DESCRIPTION 
+.LP
+\fBqwavinfo\fR reads a list of wav files and prints on standard output some of its parameters: sample rate, bits per sample, mono/stereo and duration. a duration summary is appended at the end of the list.
+
+.SH OPTIONS
+.TP
+.BR \-h ,\  \-\-help
+show a brief help and exit.
+.TP
+.BR \-s ,\  \-\-summary-only
+show only the summary. do not show info from every file.
+.TP
+.BR \-v ,\  \-\-verbose
+show also the number of bytes and samples.
+.TP
+.BR \-V ,\  \-\-version
+show version and exit.
+
+.SH BUGS
+.LP
+tests has been done only with 44100 Hz 16 bit stereo files, though it may work with mono/stereo 8/16 bits files.
+
+.SH AUTHOR 
+.LP
+dmanye@etse.urv.es
+.br
+http://www.etse.urv.es/~dmanye/quelcom/quelcom.html
+
+.SH SEE ALSO
+.BR qwavjoin (1),
+.BR qwavcut (1),
+.BR qwavsilence (1),
+.BR qwavfade (1),
+.BR qwavheaderdump (1)
+.br
+.BR qmp3info (1),
+.BR qmp3join (1),
+.BR qmp3cut (1),
+.BR qmp3check (1),
+.BR qmp3report (1)
