@@ -1,0 +1,13 @@
+to-do wish list for quelcom 0.4.0
+
+	reading/writing from/to stdin/stdout
+	use autoconf/automake
+	implement a mp3 silence detecter
+	implement a wav volume normalizer
+	allow user-customizable info format for {mp3,wav}info
+	implement a kind of lightweight quelcom sound file editor
+	include frame-decoding capability to get more extensive checking of 
+	  frames (qmp3check)
+	translations for de,fr
+	implement a (hard) real-time sound recorder (implement wav::record)
+	write a port to other operating systems/architectures (solaris+sparc)
