@@ -1,0 +1,753 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2001-02-21 23:37+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+
+#: qwavheaderdump.cc:221
+msgid "\t\t bytes/sample field should be 1, 2 or 4\n"
+msgstr "\t\t el camp bytes/mostra ha de ser 1, 2 o 4\n"
+
+#: qwavheaderdump.cc:197
+msgid "\t\tchannels field should be 1 (mono) or 2 (stereo)\n"
+msgstr "\t\tel camp channels ha de ser 1 (mono) o 2 (stereo)\n"
+
+#: qwavheaderdump.cc:231
+msgid "\t\tdata field should be 'data'\n"
+msgstr "\t\tel camp data ha de ser 'data'\n"
+
+#: qwavheaderdump.cc:242
+#, c-format
+msgid "\t\tdata length field should be %d\n"
+msgstr "\t\tel camp data length ha de ser %d\n"
+
+#: qwavheaderdump.cc:199 qwavheaderdump.cc:210 qwavheaderdump.cc:223
+msgid "\t\tdon't know which value must be set...\n"
+msgstr "\t\tno sé quin valor s'ha de posar...\n"
+
+#: qwavheaderdump.cc:135 qwavheaderdump.cc:146 qwavheaderdump.cc:157
+#: qwavheaderdump.cc:168 qwavheaderdump.cc:179 qwavheaderdump.cc:190
+#: qwavheaderdump.cc:201 qwavheaderdump.cc:235 qwavheaderdump.cc:246
+msgid "\t\tfixed\n"
+msgstr "\t\tcorregit\n"
+
+#: qwavheaderdump.cc:164
+msgid "\t\tfmt  field should be 'fmt '\n"
+msgstr "\t\tel camp fmt ha de ser 'fmt '\n"
+
+#: qwavheaderdump.cc:175
+#, c-format
+msgid "\t\tfmt length field should be %d\n"
+msgstr "\t\tel camp fmt length ha de ser %d\n"
+
+#: qwavheaderdump.cc:186
+msgid "\t\tformat field should 1 (pcm tag)\n"
+msgstr "\t\tel camp format ha de ser 1 (pcm tag)\n"
+
+#: qwavheaderdump.cc:131
+msgid "\t\triff field should be 'RIFF'\n"
+msgstr "\t\tel camp riff ha de ser 'RIFF'\n"
+
+#: qwavheaderdump.cc:142
+#, c-format
+msgid "\t\triff length field should be %d\n"
+msgstr "\t\tel camp riff length ha de ser %d\n"
+
+#: qwavheaderdump.cc:208
+msgid "\t\tsample rate field should be between 8000 and 48000\n"
+msgstr "\t\tla velocitat de mostreig ha d'estar entre 8000 i 48000\n"
+
+#: qwavheaderdump.cc:153
+msgid "\t\twave field should be 'WAVE'\n"
+msgstr "\t\tel camp wave ha de ser 'WAVE'\n"
+
+#: qwavheaderdump.cc:226
+#, c-format
+msgid "\tbits/sample: %d\n"
+msgstr "\tbits/mostra: %d\n"
+
+#: qwavheaderdump.cc:216
+#, c-format
+msgid "\tbytes/sample: %d\n"
+msgstr "\tbytes/mostra: %d\n"
+
+#: qwavheaderdump.cc:213
+#, c-format
+msgid "\tbytes/second: %d\n"
+msgstr "\tbytes/segon: %d\n"
+
+#: qwavheaderdump.cc:194
+#, c-format
+msgid "\tchannels: %d\n"
+msgstr "\tcanals: %d\n"
+
+#: qwavheaderdump.cc:239
+#, c-format
+msgid "\tdata length: %d\n"
+msgstr "\tdata length: %d\n"
+
+#: qwavheaderdump.cc:172
+#, c-format
+msgid "\tfmt length: %d\n"
+msgstr "\tfmt length: %d\n"
+
+#: qwavheaderdump.cc:139
+#, c-format
+msgid "\triff length: %d\n"
+msgstr "\triff length: %d\n"
+
+#: qwavheaderdump.cc:205
+#, c-format
+msgid "\tsample rate: %d\n"
+msgstr "\tvelocitat de mostreig: %d\n"
+
+#: qmp3report.cc:35
+msgid "   -A, --show-all: implies -d, -f, -s\n"
+msgstr "   -A, --show-all: implica -d, -f, -s\n"
+
+#: qmp3cut.cc:18
+msgid ""
+"   -B, --set-begin <cut point>: set the first frame from the beginning of "
+"the file\n"
+msgstr ""
+"   -B, --set-begin <punt de tall>: marca el primer frame des de l'inici del fitxer\n"
+
+#: qwavcut.cc:18
+msgid ""
+"   -B, --set-begin <cut point>: set the first sample from the beginning of "
+"the file\n"
+msgstr ""
+"   -B, --set-begin <punt de tall>: marca la primera mostra des de l'inici del "
+"fitxer\n"
+
+#: qmp3check.cc:21
+msgid "   -D, --delete: delete invalid frames and garbage. use with care\n"
+msgstr "   -D, --delete: esborra frames invàlids i brossa. usar amb cura\n"
+
+#: qmp3cut.cc:21
+msgid ""
+"   -E, --set-end <cut point>: set the last frame from the beginning of the "
+"file\n"
+msgstr ""
+"   -E, --set-end <punt de tall>: marca l'últim frame des de l'inici del fitxer\n"
+
+#: qwavcut.cc:21
+msgid ""
+"   -E, --set-end <cut point>: set the last sample from the beginning of the "
+"file\n"
+msgstr ""
+"   -E, --set-end <punt de tall>: marca l'última mostra des de l'inici del fitxer\n"
+
+#: qwavheaderdump.cc:41
+msgid "   -F, --fix: correct header. use with care\n"
+msgstr "   -F, --fix: corregeix la capçalera. usar amb cura\n"
+
+#: qmp3report.cc:41
+msgid "   -H, --html: output in html format (default is text)\n"
+msgstr "   -H, --html: sortida en format html (per defecte és text)\n"
+
+#: qwavsilence.cc:23
+msgid ""
+"   -S, --shrink: shrink silences greater than 'duration'. use with care.\n"
+msgstr ""
+"   -S, --shrink: retalla els silencis majors que 'durada'. usar amb cura.\n"
+
+#: qmp3cut.cc:26 qmp3cut.cc:27 qwavcut.cc:26
+msgid "   -S, --slice <time spec>-<time spec>: set the cut as a time slice\n"
+msgstr "   -S, --slice <time spec>-<time spec>: fer el tall com un segment de temps\n"
+
+#: qmp3report.cc:46
+msgid "   -S, --split: split report across visited directories\n"
+msgstr "   -S, --split: trenca el report pels directoris visitats\n"
+
+#: qmp3check.cc:24
+msgid "   -T, --delete-tag: delete tag (if exists). option -D must be set\n"
+msgstr ""
+"   -T, --delete-tag: esborra el tag (si existeix). l'opció -D ha d'estar "
+"marcada\n"
+
+#: qmp3check.cc:26 qmp3cut.cc:28 qmp3cut.cc:29 qmp3info.cc:21 qmp3join.cc:21
+#: qmp3report.cc:48 qwavcut.cc:27 qwavcut.cc:28 qwavfade.cc:27
+#: qwavheaderdump.cc:44 qwavinfo.cc:23 qwavjoin.cc:21 qwavsilence.cc:26
+msgid "   -V, --version: show version and exit\n"
+msgstr "   -V, --version: mostra la versió i surt\n"
+
+#: qmp3report.cc:34
+msgid "   -a, --all: report all files, not just *.mp3\n"
+msgstr "   -a, --all: reporta tots els fitxers, no només *.mp3\n"
+
+#: qmp3cut.cc:19
+msgid ""
+"   -b, --set-begin-from-eof <cut point>: set the first frame from the end of "
+"the file\n"
+msgstr ""
+"   -b, --set-begin-from-eof <punt de tall>: marca el primer frame des de l'inici del fitxer\n"
+
+#: qwavcut.cc:19
+msgid ""
+"   -b, --set-begin-from-eof <cut point>: set the first sample from the end "
+"of the file\n"
+msgstr ""
+"   -b, --set-begin-from-eof <punt de tall>: marca la primera mostra des del final del fitxer\n"
+
+#: qmp3info.cc:17
+msgid "   -c, --check: check the entire stream (slower but accurate)\n"
+msgstr "   -c, --check: comprova l'steam sencer (més lent però precís)\n"
+
+#: qmp3cut.cc:20 qwavcut.cc:20
+msgid "   -d, --delete: deletes the fragment\n"
+msgstr "   -d, --delete: esborra el fragment\n"
+
+#: qwavfade.cc:19
+msgid "   -d, --duration <duration>[j|s|m|b|k|M]: set the fade duration\n"
+msgstr "   -d, --duration <durada>[j|s|m|b|k|M]: marca la durada del fade\n"
+
+#: qwavsilence.cc:20
+msgid ""
+"   -d, --duration <duration>[j|s|m|b|k|M]: set the minimum silence "
+"duration.\n"
+msgstr ""
+"   -d, --duration <durada>[j|s|m|b|k|M]: marca la durada mínima d'un silenci\n"
+
+#: qmp3report.cc:38
+msgid "   -d, --show-dirs: show a report for every directory\n"
+msgstr "   -d, --show-dirs: mostra un report de cada directori\n"
+
+#: qmp3cut.cc:22
+msgid ""
+"   -e, --set-end-from-eof <cut point>: set the last frame from the end of "
+"the file\n"
+msgstr ""
+"   -e, --set-end-from-eof <punt de tall>: marca l'últim frame des del final del fitxer\n"
+
+#: qwavcut.cc:22
+msgid ""
+"   -e, --set-end-from-eof <cut point>: set the last sample from the end of "
+"the file\n"
+msgstr ""
+"   -e, --set-end-from-eof <punt de tall>: marca l'última mostra des del final del fitxer\n"
+
+#: qmp3join.cc:17
+msgid "   -f, --force: force join bypassing bit rate checks\n"
+msgstr "   -f, --force: força la unió evitant la comprovació de bit rate\n"
+
+#: qmp3cut.cc:23
+msgid "   -f, --fragment [h:[m:]]s[ms] \n"
+msgstr "   -f, --fragment [h:[m:]]s[ms] \n"
+
+#: qmp3report.cc:39
+msgid "   -f, --show-files: show a report for every file\n"
+msgstr "   -f, --show-files: mostra un report per cada fitxer\n"
+
+#: qmp3check.cc:22 qmp3cut.cc:23 qmp3cut.cc:24 qmp3info.cc:18 qmp3join.cc:18
+#: qmp3report.cc:40 qwavcut.cc:23 qwavfade.cc:20 qwavheaderdump.cc:42
+#: qwavinfo.cc:20 qwavjoin.cc:18 qwavsilence.cc:21
+msgid "   -h, --help: show this help and exit\n"
+msgstr "   -h, --help: mostra aquesta ajuda i surt\n"
+
+#: qwavfade.cc:21
+msgid "   -i, --in: just fade in\n"
+msgstr "   -i, --in: només fade in\n"
+
+#: qwavfade.cc:22
+msgid "   -l, --length [[h:]m:]s[.ms]: set the fade duration.\n"
+msgstr "   -l, --length [[h:]m:]s[.ms]: marca la durada del fade.\n"
+
+#: qwavsilence.cc:22
+msgid "   -l, --length [[h:]m:]s[.ms]: set the minimum silence duration.\n"
+msgstr "   -l, --length [[h:]m:]s[.ms]: marca la durada mínima de silenci.\n"
+
+#: qwavfade.cc:24
+msgid "   -o, --out: just fade out\n"
+msgstr "   -o, --out: només fade out\n"
+
+#: qmp3cut.cc:24 qmp3cut.cc:25 qwavcut.cc:24
+msgid "   -o, --output <file>: output file where the fragment is stored\n"
+msgstr "   -o, --output <file>: fitxer de sortida on es desa el fragment\n"
+
+#: qmp3join.cc:19 qwavjoin.cc:19
+msgid ""
+"   -o, --output <file>: send output to <file>. otherwise, append to <file1>\n"
+msgstr ""
+"   -o, --output <fitxer>: envia la sortida a <fitxer>. altrament, s'annexa a <fitxer1>\n"
+
+#: qmp3check.cc:23 qwavheaderdump.cc:43
+msgid "   -q, --quiet: no output messages\n"
+msgstr "   -q, --quiet: cap missatge de sortida\n"
+
+#: qmp3report.cc:43
+msgid "   -r, --recursive: scan directories\n"
+msgstr "   -r, --recursive: escaneja directoris\n"
+
+#: qmp3report.cc:45
+msgid "   -s, --show-summary: show a summary report\n"
+msgstr "   -s, --show-summary: mostra un report sumari\n"
+
+#: qmp3cut.cc:25 qmp3cut.cc:26 qwavcut.cc:25
+msgid "   -s, --size <cut point>: specifies the size of the cut\n"
+msgstr "   -s, --size <punt de tall>: especifica la mida del tall\n"
+
+#: qmp3info.cc:19 qwavinfo.cc:21
+msgid "   -s, --summary-only: show only the summary\n"
+msgstr "   -s, --summary-only: mostra només el sumari\n"
+
+#: qwavfade.cc:25
+msgid "   -t, --test: don't modify. create and fade a test file\n"
+msgstr "   -t, --test: no modifica. crea i 'fade' un fitxer de prova\n"
+
+#: qwavsilence.cc:24
+msgid ""
+"   -t, --threshold <threshold>: set the maximum value (in %) for silent "
+"samples\n"
+msgstr ""
+"   -t, --threshold <llindar>: marca el valor màxim (en %) de les mostres silencioses\n"
+
+#: qmp3check.cc:25 qmp3report.cc:47 qwavfade.cc:26 qwavsilence.cc:25
+msgid "   -v, --verbose: show more detailed info\n"
+msgstr "   -v, --verbose: mostra informació més detallada\n"
+
+#: qmp3cut.cc:27 qmp3cut.cc:28 qmp3info.cc:20 qmp3join.cc:20 qwavcut.cc:26
+#: qwavcut.cc:27 qwavinfo.cc:22 qwavjoin.cc:20
+msgid "   -v, --verbose: verbose\n"
+msgstr "   -v, --verbose: explícit\n"
+
+#: qmp3check.cc:19
+#, c-format
+msgid " %s: check and clean mp3 streams\n"
+msgstr " %s: comprova i neteja streams d'mp3\n"
+
+#: qwavsilence.cc:18
+#, c-format
+msgid " %s: detect and shrink silence sequence in wav files\n"
+msgstr " %s: detecta i retalla seqüències de silenci en fitxers wav\n"
+
+#: qwavheaderdump.cc:39
+#, c-format
+msgid " %s: dump (and fix) wav header\n"
+msgstr " %s: aboca (i corregeix) capçaleres wav\n"
+
+#: qmp3cut.cc:15
+#, c-format
+msgid " %s: extract and/or delete parts of a mp3 file\n"
+msgstr " %s: extreu i/o esborra parts d'un fitxer mp3\n"
+
+#: qwavcut.cc:15
+#, c-format
+msgid " %s: extract and/or delete parts of a wav file\n"
+msgstr " %s: extreu i/o esborra parts d'un fitxer wav\n"
+
+#: qwavfade.cc:17
+#, c-format
+msgid " %s: fade in/out wav files\n"
+msgstr " %s: fade in/out fitxers wav\n"
+
+#: qmp3report.cc:31
+#, c-format
+msgid " %s: generate reports from mp3 files and directories\n"
+msgstr " %s: genera reports de fitxers i directoris mp3\n"
+
+#: qmp3join.cc:15
+#, c-format
+msgid " %s: join mp3 files\n"
+msgstr " %s: ajunta fitxers mp3\n"
+
+#: qwavjoin.cc:16
+#, c-format
+msgid " %s: join wav files\n"
+msgstr " %s: ajunta fitxers wav\n"
+
+#: qmp3info.cc:15
+#, c-format
+msgid " %s: show info from mp3 files\n"
+msgstr " %s: mostra informació de fitxers mp3\n"
+
+#: qwavinfo.cc:18
+#, c-format
+msgid " %s: show info from wav files\n"
+msgstr " %s: mostra informació de fitxers wav\n"
+
+#: qmp3cut.cc:29 qmp3cut.cc:30 qwavcut.cc:28 qwavcut.cc:29
+msgid " <cut point> = <value>[j|s|m|b|k|M]\n"
+msgstr " <punt de tall> = <valor>[j|s|m|b|k|M]\n"
+
+#: qmp3cut.cc:30 qmp3cut.cc:31 qwavcut.cc:30
+msgid " <time spec> = [[h:]m:]s[.ms]\n"
+msgstr ""
+
+#: qwavinfo.cc:131
+#, c-format
+msgid " => %d:%02d.%03d  %u samples  %u bytes\n"
+msgstr " => %d:%02d.%03d  %u mostres  %u bytes\n"
+
+#: qmp3.cc:149 qmp3.cc:158
+msgid " bytes of garbage at the end"
+msgstr " bytes de brossa al final"
+
+#: qreport.cc:180 qreport.cc:203
+msgid " directories  "
+msgstr " directoris  "
+
+#: qreport.cc:181
+msgid " files  "
+msgstr " fitxers  "
+
+#: qmp3report.cc:135 qmp3report.cc:241
+msgid " is a special file. skipping."
+msgstr " és un fitxer especial. ignorat."
+
+#: qmp3.cc:24 qwav.cc:22
+msgid " is not compatible"
+msgstr " no és compatible"
+
+#: qmp3cut.cc:17 qmp3report.cc:33 qwavcut.cc:17
+msgid " options:\n"
+msgstr " opcions:\n"
+
+#: qmp3cut.cc:31 qwavcut.cc:31 qwavfade.cc:28
+msgid " see info manual for more info about options and usage\n"
+msgstr " mira el manual info per més informació sobre opcions i ús\n"
+
+#: qmp3cut.cc:16 qwavcut.cc:16
+#, c-format
+msgid " syntax: %s [option]... file\n"
+msgstr " sintaxi: %s [opció]... fitxer\n"
+
+#: qmp3check.cc:20 qmp3info.cc:16 qmp3report.cc:32 qwavfade.cc:18
+#: qwavheaderdump.cc:40 qwavinfo.cc:19 qwavsilence.cc:19
+#, c-format
+msgid " syntax: %s [option]... file...\n"
+msgstr " sintaxi: %s [opció]... fitxer...\n"
+
+#: qmp3join.cc:16 qwavjoin.cc:17
+#, c-format
+msgid " syntax: %s [option]... file1 file2...\n"
+msgstr " sintaxi: %s [opció]... fitxer1 fitxer2...\n"
+
+#: qmp3check.cc:330
+#, c-format
+msgid "%d error files found\n"
+msgstr "trobats %d fitxers erronis\n"
+
+#: qmp3check.cc:79 qmp3cut.cc:105 qmp3cut.cc:106 qmp3info.cc:72 qmp3join.cc:71
+#: qmp3report.cc:191 qwavcut.cc:97 qwavcut.cc:105 qwavfade.cc:98
+#: qwavheaderdump.cc:89 qwavinfo.cc:69 qwavjoin.cc:67 qwavsilence.cc:96
+#, c-format
+msgid "%s - version %s - build %s\n"
+msgstr "%s - versió %s - creat %s\n"
+
+#: qmp3check.cc:169
+#, c-format
+msgid "%s: %d bytes of garbage at the end"
+msgstr "%s: %d bytes de brossa al final"
+
+#: qmp3check.cc:312
+#, c-format
+msgid "%s: %d frames, %d bytes\n"
+msgstr ""
+
+#: qmp3check.cc:296
+#, c-format
+msgid "%s: %d of %d discardable bytes\n"
+msgstr "%s: %d de %d bytes rebutjables\n"
+
+#: qwavsilence.cc:176
+#, c-format
+msgid "%s: %d:%02d of silence at %d:%02d\n"
+msgstr "%s: %d:%02d de silenci a %d:%02d\n"
+
+#: qwavsilence.cc:181
+#, c-format
+msgid "%s: %d:%02d.%03d (%d samples) at %d:%02d:%03d (sample %d)\n"
+msgstr "%s: %d:%02d.%03d (%d mostres) a %d:%02d:%03d (mostra %d)\n"
+
+#: qwavheaderdump.cc:116
+#, c-format
+msgid "%s: '%s' has not enough room for a wav header\n"
+msgstr "%s: '%s' no té prou espai per a una capçalera wav\n"
+
+#: qmp3report.cc:92
+#, c-format
+msgid "%s: '%s' is a directory\n"
+msgstr "%s: '%s' és un directori\n"
+
+#: qmp3report.cc:100
+#, c-format
+msgid "%s: cannot scan '%s'\n"
+msgstr "%s: no es pot escanejar '%s'\n"
+
+#: qmp3report.cc:115 qmp3report.cc:216
+#, c-format
+msgid "%s: error reading '%s' status: %s\n"
+msgstr "%s: error llegint l'estat de '%s': %s\n"
+
+#: qmp3check.cc:159
+#, c-format
+msgid "%s: first frame incomplete: %d of %d bytes\n"
+msgstr "%s: frame inicial incomplet: %d de %d bytes\n"
+
+#: qmp3check.cc:226
+#, c-format
+msgid "%s: last frame (%d+1) truncated: %d of %d bytes\n"
+msgstr "%s: darrer frame (%d+1) escapçat: %d de %d bytes\n"
+
+#: qmp3check.cc:194 qmp3check.cc:240
+#, c-format
+msgid "%s: moving %d bytes"
+msgstr "%s: movent %d bytes"
+
+#: qmp3check.cc:277
+#, c-format
+msgid "%s: moving tag (%d bytes)"
+msgstr "%s: movent el tag (%d bytes)"
+
+#: qmp3check.cc:82 qmp3cut.cc:110 qmp3cut.cc:111 qmp3info.cc:77 qmp3join.cc:76
+#: qmp3report.cc:196 qwavcut.cc:102 qwavcut.cc:110 qwavfade.cc:103
+#: qwavheaderdump.cc:94 qwavinfo.cc:74 qwavjoin.cc:72 qwavsilence.cc:101
+#, c-format
+msgid "%s: option '%s' is not recognized or bad used\n"
+msgstr "%s: l'opció '%s' no està reconeguda o està mal usada\n"
+
+#: qmp3check.cc:182
+#, c-format
+msgid "%s: skipped %d bytes"
+msgstr "%s: saltats %d bytes"
+
+#: qmp3check.cc:147
+#, c-format
+msgid "%s: skipped %d bytes of garbage at the beginning\n"
+msgstr "%s: saltats %d bytes de brossa a l'inici\n"
+
+#: qmp3check.cc:264
+#, c-format
+msgid "%s: skipping tag"
+msgstr "%s: saltant el tag"
+
+#: qwavsilence.cc:87
+#, c-format
+msgid "%s: threshold must be 0..100 (%d)\n"
+msgstr "%s: el llindar ha de ser 0..100 (%d)\n"
+
+#: qwavsilence.cc:250
+#, c-format
+msgid "%s: total silence reported: %d:%02d.%02d (%d samples)\n"
+msgstr "%s: total de silenci reportat: %d:%02d.%02d (%d mostres)\n"
+
+#: qmp3check.cc:300
+#, c-format
+msgid "%s: truncating to %d bytes\n"
+msgstr "%s: escapçant a %d bytes\n"
+
+#: qmp3info.cc:139 qwavinfo.cc:127
+#, c-format
+msgid "%u file%c"
+msgstr "%u fitxer%c"
+
+#: qmp3join.cc:83 qwavjoin.cc:79
+msgid ": at least two files to join must be specified\n"
+msgstr ": com a mínim s'han d'especificar dos fitxers per unir\n"
+
+#: qwavfade.cc:127
+msgid ": both fades overlap. they'd be done separately\n"
+msgstr ": els dos fades se sobreposen. s'han de fer per separat\n"
+
+#: qwavsilence.cc:134
+msgid ": empty"
+msgstr ": buit"
+
+#: qmp3check.cc:89
+msgid ": flag -T requires -D. ignoring -T"
+msgstr ": el flag -T requereix -D. ignorant -T"
+
+#: qmp3check.cc:95 qmp3info.cc:85 qmp3report.cc:204 qwavfade.cc:111
+#: qwavheaderdump.cc:102 qwavinfo.cc:82 qwavsilence.cc:109
+msgid ": no input file(s)"
+msgstr ": cap fitxer d'entrada"
+
+#: qmp3check.cc:127
+msgid ": no tag"
+msgstr ": sense tag"
+
+#: qmp3cut.cc:121 qmp3cut.cc:122 qwavcut.cc:113 qwavcut.cc:121
+msgid ": only one file to cut must be specified"
+msgstr ": només s'ha d'especificar un fitxer per tallar"
+
+#: qwavsilence.cc:140
+msgid ": smaller than the silence searched for"
+msgstr ": menor que el silenci que es busca"
+
+#: qmp3info.cc:104 qmp3report.cc:73
+msgid ": vbr detected => automatic check"
+msgstr ": detectat vbr => comprovació automàtica"
+
+#: qmp3cut.cc:150 qmp3cut.cc:151
+msgid ": vbr format is not supported"
+msgstr ": el format vbr no se suporta"
+
+#: qmp3.cc:187
+msgid "[no tag]"
+msgstr "[sense tag]"
+
+#: qmp3join.cc:126 qwavjoin.cc:109
+#, c-format
+msgid "appending '%s' to '%s'..."
+msgstr "annexant '%s' a '%s'..."
+
+#: qmp3join.cc:98 qwavjoin.cc:94
+#, c-format
+msgid "copying '%s' to '%s'..."
+msgstr "copiant '%s' a '%s'..."
+
+#: qwavfade.cc:145 qwavfade.cc:179
+#, c-format
+msgid "created testfile '%s'\n"
+msgstr "creat el fitxer de prova '%s'\n"
+
+#: qwav.cc:263
+msgid "cut: last sample > first sample"
+msgstr "cut: darrera mostra > primera mostra"
+
+#: qvf.cc:73
+msgid "error reading: "
+msgstr "error llegint: "
+
+#: qwavfade.cc:160
+#, c-format
+msgid "faded in %d samples in '%s'\n"
+msgstr "faded in %d mostres a '%s'\n"
+
+#: qwavfade.cc:194
+#, c-format
+msgid "faded out %d samples in '%s'\n"
+msgstr "faded out %d mostres a '%s'\n"
+
+#: qwavfade.cc:121
+#, c-format
+msgid "fading '%s'...\n"
+msgstr ""
+
+#: qmp3.cc:129
+msgid "first frame incomplete"
+msgstr "primer frame incomplet"
+
+#: qvf.cc:81
+msgid "format is undefined"
+msgstr "el format és indefinit"
+
+#: qmp3.cc:411 qwavheader.cc:153
+msgid "format not recognized: "
+msgstr "el format no es reconeix: "
+
+#: qmp3.cc:421 qmp3.cc:443
+msgid "frame out of range: "
+msgstr "frame fora de rang: "
+
+#: qwavheader.cc:88
+msgid "header format error"
+msgstr "error de format de capçalera"
+
+#: qwavheader.cc:97
+msgid "header value error"
+msgstr "error en valor de capçalera"
+
+#: qmp3frameheader.cc:182 qmp3frameheader.cc:207
+msgid "invalid field"
+msgstr "camp invàl.lid"
+
+#: qvf.cc:48
+msgid "invalid format specifier: "
+msgstr "especificador de format invàl.lid: "
+
+#: qmisc.cc:29 qmisc.cc:38 qmisc.cc:48 qmisc.cc:61 qmisc.cc:66
+msgid "invalid time specification"
+msgstr "especificació de temps invàl.lida"
+
+#: qmp3.cc:370
+msgid "last frame > first frame"
+msgstr "darrer frame > primer frame"
+
+#: qmp3frameheader.cc:216
+msgid "layer not supported"
+msgstr "layer no suportat"
+
+#: qwavheader.cc:109
+msgid "length mismatch"
+msgstr "incoherència de llargada"
+
+#: qwavsilence.cc:197 qwavsilence.cc:235
+#, c-format
+msgid "move %d..%d (%d samples) to %d..%d\n"
+msgstr "mou %d..%d (%d mostres) a %d..%d\n"
+
+#: qcuthandler.cc:28
+msgid "no '-' found"
+msgstr "cap '-' trobat"
+
+#: qmp3frameheader.cc:146
+msgid "no valid header found"
+msgstr "no s'ha trobat cap capçalera vàl.lida"
+
+#: qfile.cc:60
+msgid "not a regular file"
+msgstr "no és un fitxer regular"
+
+#: qmp3frameheader.cc:240
+msgid "only layer III is supported"
+msgstr "només el layer III està suportat"
+
+#: qmp3.cc:336 qwav.cc:229
+msgid "options (-b or -B), (-e or -E) and -s cannot be used together"
+msgstr "les opcions (-b o -B), (-e o -E) i -s no es poden usar alhora"
+
+#: qmp3.cc:359 qwav.cc:251
+msgid "options -B and -b cannot be used together"
+msgstr "les opcions -B i -b no es poden usar alhora"
+
+#: qmp3.cc:318 qwav.cc:212
+msgid "options -E and -e cannot be used together"
+msgstr "les opcions -E i -e no es poden usar alhora"
+
+#: qtag.cc:95 qtag.cc:115 qwavsample.cc:107 qwavsample.cc:119
+#: qwavsample.cc:130 qwavsample.cc:146 qwavsample.cc:158 qwavsample.cc:181
+#: qwavsample.cc:194
+msgid "quelcom internal error"
+msgstr "error intern de quelcom"
+
+#: qwavheader.cc:157
+msgid "sample out of range: "
+msgstr "mostra fora de rang: "
+
+#: qmp3cut.cc:143 qmp3cut.cc:144 qmp3join.cc:109 qmp3join.cc:120
+#, c-format
+msgid "scanning '%s'..."
+msgstr "escanejant '%s'..."
+
+#: qwavsilence.cc:193
+#, c-format
+msgid "shrink %d samples at %d\n"
+msgstr "retalla %d mostres a %d\n"
+
+#: qtag.cc:33 qtag.cc:83 qtag.cc:103
+msgid "tag is invalid"
+msgstr "el tag és invàl.lid"
+
+#: qmp3frameheader.cc:243
+msgid "undefined version"
+msgstr "versió indefinida"
+
+#: qwavsample.cc:49 qwavsample.cc:87
+msgid "unsupported bits/sample value"
+msgstr "valor de bits/mostra no suportat"
+
+#: qwavsample.cc:36 qwavsample.cc:46 qwavsample.cc:72 qwavsample.cc:84
+msgid "unsupported channel value"
+msgstr "nombre de canals no suportat"
